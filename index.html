@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IWM — IT Workshop &amp; Maintenance, Viseu</title>
+    <meta name="description" content="IWM — IT Workshop & Maintenance: software à medida, manutenção e montagem de computadores e formação para todas as idades. Viseu, Portugal." />
+    <meta property="og:title" content="IWM — IT Workshop & Maintenance" />
+    <meta property="og:description" content="Software à medida, manutenção e montagem de computadores e formação para todas as idades. Viseu, Portugal." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <!-- A cor é lida do tema (src/theme.css) por JS: ver syncBrowserChrome() em App.tsx -->
+    <meta name="theme-color" content="" />
+    <!-- O favicon também é desenhado a partir do tema, em JS (syncBrowserChrome) -->
+    <link rel="icon" href="data:," />
+    <link rel="preload" href="/fonts/satoshi-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/satoshi-variable-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/martian-mono-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      // Tema: escolha guardada > ?theme= > preferência do sistema. Paleta: ?palette=<preset>.
+      try {
+        var d = document.documentElement, q = new URLSearchParams(location.search);
+        var m = q.get("theme") || localStorage.getItem("iwm-theme");
+        if (m === "dark" || (!m && matchMedia("(prefers-color-scheme: dark)").matches)) d.classList.add("dark");
+        if (q.get("palette")) d.dataset.palette = q.get("palette");
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

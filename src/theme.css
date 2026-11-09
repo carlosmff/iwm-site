@@ -1,0 +1,180 @@
+/* =====================================================================
+   IWM · Tema
+   Única fonte de verdade das cores e das fontes do site.
+
+   Para mudar a paleta inteira, muda APENAS as 3 variáveis do primeiro
+   bloco. Tudo o resto (modo claro, modo escuro, secções escuras, hero,
+   diagrama, theme-color) é derivado delas.
+
+   Presets: <html data-palette="placa-mae"> (ver mais abaixo), ou ?palette=… no URL.
+   Verificar contraste: npm run check:contrast
+   ===================================================================== */
+
+:root,
+[data-palette="padrao"] {
+  --mood-light: #DBF2FC; /* Seal Blue    · ambiente claro (~60%) */
+  --mood-dark:  #072D59; /* Navy Blue    · ambiente escuro (~30%) */
+  --accent:     #FD6E88; /* Crimson Pink · o pop (~10% ou menos) */
+
+  --font-display: "Satoshi", "Avenir Next", "Helvetica Neue", sans-serif;
+  --font-body: "Satoshi", "Avenir Next", "Helvetica Neue", sans-serif;
+  --font-mono: "Martian Mono", "SFMono-Regular", Menlo, monospace;
+}
+
+/* ---------------------------------------------------------------------
+   Presets de paleta, ativáveis no <html data-palette="…">
+   (o seletor serve qualquer elemento: as amostras do seletor de paletas usam-no)
+   --------------------------------------------------------------------- */
+[data-palette="placa-mae"]      { --mood-light: #E3F2EC; --mood-dark: #0B3B33; --accent: #FF7A45; } /* verde-PCB + cobre */
+[data-palette="teal-ambar"]     { --mood-light: #DDEFEF; --mood-dark: #0F3D44; --accent: #FFB020; } /* teal + âmbar */
+[data-palette="oficina"]        { --mood-light: #EEEBE4; --mood-dark: #16181D; --accent: #FF5A1F; } /* osso + grafite + laranja-sinal */
+[data-palette="dao"]            { --mood-light: #F3EDE3; --mood-dark: #3B0F1A; --accent: #6A8DFF; } /* creme + bordô + cobalto */
+[data-palette="grafite-rosa"]   { --mood-light: #ECEFF2; --mood-dark: #17191E; --accent: #FD6E88; } /* o mesmo rosa, sobre grafite */
+[data-palette="ardosia-lima"]   { --mood-light: #E8EEEA; --mood-dark: #1C2A30; --accent: #C8F03C; } /* ardósia + lima */
+[data-palette="oceano-sol"]     { --mood-light: #E0F2F6; --mood-dark: #06344A; --accent: #FFC23C; } /* oceano + sol */
+[data-palette="papel-vermelho"] { --mood-light: #F2F2EE; --mood-dark: #1A1A22; --accent: #FF5A4E; } /* papel + tinta + vermelho-sinal */
+[data-palette="menta-coral"]    { --mood-light: #E3F5EE; --mood-dark: #0F3E39; --accent: #FF7B6B; } /* menta + coral */
+[data-palette="noite-ciano"]    { --mood-light: #E4F0F5; --mood-dark: #0A1A2F; --accent: #3DD6E0; } /* noite + ciano de LED */
+
+/* ---------------------------------------------------------------------
+   Fontes (self-hosted, em /public/fonts)
+   --------------------------------------------------------------------- */
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi-variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi-variable-italic.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Martian Mono";
+  src: url("/fonts/martian-mono-variable.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =====================================================================
+   Tokens semânticos. Os componentes só usam estes.
+   Os modos claro/escuro mudam apenas o mapeamento abaixo.
+   ===================================================================== */
+
+/* ---- Modo claro: a oficina de dia -------------------------------- */
+:root {
+  color-scheme: light;
+
+  --bg:            var(--mood-light);
+  --bg-raised:     oklch(from var(--mood-light) calc(l + (1 - l) * 0.6) calc(c * 0.45) h);
+  --bg-sunken:     color-mix(in oklch, var(--mood-light) 93%, var(--mood-dark));
+  --text:          var(--mood-dark);
+  --text-muted:    color-mix(in oklch, var(--mood-dark) 78%, var(--mood-light));
+  --border:        color-mix(in oklch, var(--mood-dark) 14%, var(--mood-light));
+  --border-strong: color-mix(in oklch, var(--mood-dark) 34%, var(--mood-light));
+
+  /* O rosa nunca é texto sobre claro: para texto/links usa-se a versão escura. */
+  --accent-ink:    oklch(from var(--accent) 0.5 min(c, 0.17) h);
+  --cta-bg:        var(--accent);
+  --cta-bg-hover:  oklch(from var(--accent) calc(l + 0.05) c h);
+  --cta-text:      var(--mood-dark);
+  --focus-ring:    var(--accent-ink);
+
+  --hero-glow:     var(--accent);
+  --glow-strength: 0.5;
+  --shadow:        color-mix(in oklch, var(--mood-dark) 22%, transparent);
+
+  /* Materiais do hero e do diagrama */
+  --metal-hi:  oklch(from var(--mood-light) calc(l + (1 - l) * 0.8) calc(c * 0.4) h);
+  --metal-mid: color-mix(in oklch, var(--mood-light) 60%, var(--mood-dark));
+  --metal-lo:  color-mix(in oklch, var(--mood-dark) 85%, var(--mood-light));
+  --sky-deep:  color-mix(in oklch, var(--mood-light) 62%, var(--mood-dark));
+}
+
+/* ---- Modo escuro: a máquina ligada à noite ------------------------
+   Não é o claro invertido: a base desce abaixo do navy, as superfícies
+   sobem em luz e o rosa passa a ser a principal fonte de luz.          */
+:root.dark,
+.band {
+  color-scheme: dark;
+
+  --bg:            var(--mood-dark);
+  --bg-raised:     oklch(from var(--mood-dark) calc(l + 0.05) c h);
+  --bg-sunken:     oklch(from var(--mood-dark) calc(l * 0.82) c h);
+  --text:          var(--mood-light);
+  --text-muted:    color-mix(in oklch, var(--mood-light) 72%, var(--mood-dark));
+  --border:        color-mix(in oklch, var(--mood-light) 15%, var(--mood-dark));
+  --border-strong: color-mix(in oklch, var(--mood-light) 34%, var(--mood-dark));
+
+  --accent-ink:    oklch(from var(--accent) max(l, 0.72) c h);
+  --cta-bg:        var(--accent);
+  --cta-bg-hover:  oklch(from var(--accent) calc(l + 0.05) c h);
+  --cta-text:      var(--mood-dark);
+  --focus-ring:    var(--accent);
+
+  --hero-glow:     var(--accent);
+  --glow-strength: 0.9;
+  --shadow:        oklch(from var(--mood-dark) calc(l * 0.35) c h / 0.6);
+
+  --metal-hi:  color-mix(in oklch, var(--mood-light) 80%, var(--mood-dark));
+  --metal-mid: color-mix(in oklch, var(--mood-light) 30%, var(--mood-dark));
+  --metal-lo:  oklch(from var(--mood-dark) calc(l * 0.62) c h);
+  --sky-deep:  oklch(from var(--mood-dark) calc(l * 0.55) c h);
+}
+
+/* A página escura desce abaixo do navy, para as secções .band subirem. */
+:root.dark {
+  --bg:        oklch(from var(--mood-dark) calc(l * 0.68) c h);
+  --bg-raised: var(--mood-dark);
+  --bg-sunken: oklch(from var(--mood-dark) calc(l * 0.6) c h);
+}
+
+/* ---------------------------------------------------------------------
+   Fallbacks para browsers sem relative color syntax / color-mix
+   --------------------------------------------------------------------- */
+@supports not (color: oklch(from red l c h)) {
+  :root {
+    --bg-raised:    color-mix(in srgb, var(--mood-light) 45%, white);
+    --accent-ink:   color-mix(in srgb, var(--accent) 50%, var(--mood-dark));
+    --cta-bg-hover: var(--accent);
+    --metal-hi:     color-mix(in srgb, var(--mood-light) 30%, white);
+  }
+  :root.dark,
+  .band {
+    --bg-raised:    color-mix(in srgb, var(--mood-dark) 90%, var(--mood-light));
+    --bg-sunken:    color-mix(in srgb, var(--mood-dark) 82%, black);
+    --accent-ink:   var(--accent);
+    --cta-bg-hover: var(--accent);
+    --shadow:       color-mix(in srgb, var(--mood-dark) 50%, transparent);
+    --metal-lo:     color-mix(in srgb, var(--mood-dark) 70%, black);
+    --sky-deep:     color-mix(in srgb, var(--mood-dark) 60%, black);
+  }
+  :root.dark {
+    --bg:        color-mix(in srgb, var(--mood-dark) 78%, black);
+    --bg-raised: var(--mood-dark);
+    --bg-sunken: color-mix(in srgb, var(--mood-dark) 62%, black);
+  }
+}
+
+@supports not (color: color-mix(in srgb, red, blue)) {
+  :root {
+    --bg-raised: var(--mood-light); --bg-sunken: var(--mood-light);
+    --text-muted: var(--mood-dark); --border: var(--mood-dark); --border-strong: var(--mood-dark);
+    --accent-ink: var(--mood-dark); --focus-ring: var(--mood-dark);
+    --metal-hi: var(--mood-light); --metal-mid: var(--mood-light); --metal-lo: var(--mood-dark);
+    --sky-deep: var(--mood-light); --shadow: transparent;
+  }
+  :root.dark,
+  .band {
+    --bg: var(--mood-dark); --bg-raised: var(--mood-dark); --bg-sunken: var(--mood-dark);
+    --text-muted: var(--mood-light); --border: var(--mood-light); --border-strong: var(--mood-light);
+    --accent-ink: var(--accent); --focus-ring: var(--accent);
+    --metal-hi: var(--mood-light); --metal-mid: var(--mood-dark); --metal-lo: var(--mood-dark);
+    --sky-deep: var(--mood-dark);
+  }
+}
