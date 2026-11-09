@@ -3,10 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "IWM — Integrated Workforce Management" },
-      { name: "description", content: "IWM: desde 2002, soluções para gestão de obras, manutenção e equipas de redes elétricas." },
-      { property: "og:title", content: "IWM — Integrated Workforce Management" },
-      { property: "og:description", content: "Desde 2002, soluções para gestão de obras, manutenção e equipas de redes elétricas." },
+      { title: "IWM — IT Workshop & Maintenance" },
+      { name: "description", content: "IWM: um espaço pessoal dedicado à tecnologia — desenvolvimento, manutenção informática e formação." },
+      { property: "og:title", content: "IWM — IT Workshop & Maintenance" },
+      { property: "og:description", content: "Um espaço pessoal dedicado à tecnologia — desenvolvimento, manutenção informática e formação." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -15,27 +15,25 @@ export const Route = createFileRoute("/")({
 });
 
 const timeline = [
-  { year: "2002", title: "A origem", text: "Nasce da necessidade de controlar e gerir dados de obras e manutenção de redes elétricas, equipas de manutenção e avarias. As primeiras aplicações são desenvolvidas em Microsoft Access." },
-  { year: "2000s", title: "Evolução para C#", text: "As aplicações amadurecem e são reescritas em C#, ganhando robustez, desempenho e capacidade para servir mais utilizadores." },
-  { year: "2014", title: "iwm.pt", text: "É adquirido o domínio iwm.pt para dar impulso às aplicações em ambiente web, acessíveis em qualquer lugar." },
-  { year: "Hoje", title: "Plataforma integrada", text: "O IWM abrange várias áreas de negócio, unindo operação, gestão e análise de dados num só ecossistema." },
+  { year: "2002", title: "O início", text: "Começa como um projeto pessoal, movido pela vontade de organizar informação e simplificar tarefas do dia a dia." },
+  { year: "2000s", title: "Maturidade", text: "As primeiras ideias ganham forma em aplicações mais sólidas, escritas e reescritas com o que se ia aprendendo." },
+  { year: "2014", title: "iwm.pt", text: "O domínio iwm.pt passa a ser a casa de todos os projetos, num só endereço." },
+  { year: "Hoje", title: "Oficina aberta", text: "Continua a ser um espaço de experimentação: construir, reparar, aprender e partilhar." },
 ];
 
 const areas = [
-  "Gestão de obras e manutenção",
-  "Gestão de equipas",
-  "Gestão de avarias",
-  "Reclamações",
-  "Gestão comercial",
-  "Rede de Iluminação Pública",
-  "Topografia e Projetos MT/AT",
-  "Reports e análise de dados em Power BI",
+  "Desenvolvimento de aplicações",
+  "Automação de processos",
+  "Dados e reporting",
+  "Manutenção informática",
+  "Reparação de computadores",
+  "Formação profissional",
 ];
 
 const values = [
-  { t: "Experiência de terreno", d: "Ferramentas pensadas para quem precisa de ter o controlo absoluto da gestão integrada das equipas." },
-  { t: "Dados fiáveis", d: "Informação centralizada, rastreável e pronta para decisão." },
-  { t: "Evolução contínua", d: "Mais de duas décadas a acompanhar a tecnologia e as necessidades reais." },
+  { t: "Mão na massa", d: "Soluções feitas para resolver problemas concretos, sem complicar o que pode ser simples." },
+  { t: "Clareza", d: "Tecnologia explicada e aplicada de forma direta, com resultados que se veem." },
+  { t: "Aprendizagem contínua", d: "Mais de duas décadas a acompanhar a tecnologia e a partilhar o que se aprende." },
 ];
 
 function Index() {
@@ -53,18 +51,18 @@ function Index() {
         <div className="relative mx-auto max-w-6xl px-6 pb-24 pt-20 md:pt-32">
           <p className="mb-6 text-sm uppercase tracking-[0.3em] text-primary">Desde 2002</p>
           <h1 className="font-display max-w-4xl text-5xl leading-[1.05] md:text-7xl">
-            Integrated Workforce Management
+            IT Workshop <span className="text-primary">&amp;</span> Maintenance
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-muted-foreground">
-            Um projeto pessoal que se tornou plataforma: mais de vinte anos a construir soluções
-            para gerir obras, equipas e redes elétricas — com rigor técnico e proximidade humana.
+            Uma oficina de tecnologia: um projeto pessoal, sem fins comerciais, onde se constroem
+            aplicações, se cuidam sistemas e se partilha conhecimento.
           </p>
         </div>
       </section>
 
       <section className="border-t border-border">
         <div className="mx-auto max-w-6xl px-6 py-24">
-          <h2 className="font-display text-3xl md:text-4xl">A história</h2>
+          <h2 className="font-display text-3xl md:text-4xl">Percurso</h2>
           <ol className="mt-12 grid gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-4">
             {timeline.map((s) => (
               <li key={s.year} className="bg-card p-8">
@@ -80,10 +78,9 @@ function Index() {
       <section className="border-t border-border bg-secondary">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-[1fr_1.4fr]">
           <div>
-            <h2 className="font-display text-3xl md:text-4xl">Áreas de atuação</h2>
+            <h2 className="font-display text-3xl md:text-4xl">O que se faz aqui</h2>
             <p className="mt-4 text-muted-foreground">
-              O que começou na manutenção de redes elétricas expandiu-se para um ecossistema
-              que cobre todo o ciclo operacional e de gestão.
+              Do código ao hardware: tudo o que envolve pôr a tecnologia a funcionar bem.
             </p>
           </div>
           <ul className="grid gap-3 sm:grid-cols-2">
@@ -109,15 +106,14 @@ function Index() {
             ))}
           </div>
           <blockquote className="font-display mx-auto mt-24 max-w-3xl text-center text-2xl leading-snug md:text-3xl">
-            “O IWM nasceu para resolver problemas reais no terreno. Continua a crescer com o mesmo
-            propósito: pôr a informação ao serviço de quem trabalha.”
+            “Uma oficina não se define pelo que produz, mas pelo que ensina a quem lá entra.”
           </blockquote>
         </div>
       </section>
 
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col justify-between gap-2 px-6 py-8 text-sm text-muted-foreground md:flex-row">
-          <span>© 2002–{new Date().getFullYear()} IWM — Integrated Workforce Management</span>
+          <span>© 2002–{new Date().getFullYear()} IWM — IT Workshop &amp; Maintenance</span>
           <span>iwm.pt</span>
         </div>
       </footer>
