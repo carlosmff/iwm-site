@@ -3,10 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "IWM — IT Workshop & Maintenance" },
-      { name: "description", content: "IWM: um espaço pessoal dedicado à tecnologia — desenvolvimento, manutenção informática e formação." },
+      { title: "IWM — IT Workshop & Maintenance · Viseu" },
+      { name: "description", content: "IWM — IT Workshop & Maintenance: software, manutenção e montagem de computadores à medida e formação para todas as idades. Viseu, Portugal." },
       { property: "og:title", content: "IWM — IT Workshop & Maintenance" },
-      { property: "og:description", content: "Um espaço pessoal dedicado à tecnologia — desenvolvimento, manutenção informática e formação." },
+      { property: "og:description", content: "Software, manutenção e montagem de computadores à medida e formação para todas as idades. Viseu, Portugal." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -18,22 +18,22 @@ const timeline = [
   { year: "2002", title: "O início", text: "Começa como um projeto pessoal, movido pela vontade de organizar informação e simplificar tarefas do dia a dia." },
   { year: "2000s", title: "Maturidade", text: "As primeiras ideias ganham forma em aplicações mais sólidas, escritas e reescritas com o que se ia aprendendo." },
   { year: "2014", title: "iwm.pt", text: "O domínio iwm.pt passa a ser a casa de todos os projetos, num só endereço." },
-  { year: "Hoje", title: "Oficina aberta", text: "Continua a ser um espaço de experimentação: construir, reparar, aprender e partilhar." },
+  { year: "Hoje", title: "A caminho da oficina", text: "Ao software juntam-se a manutenção e montagem de computadores e a formação: o IWM está a ganhar a forma de uma verdadeira oficina de tecnologia." },
 ];
 
 const areas = [
-  "Desenvolvimento de aplicações",
+  "Desenvolvimento de software",
   "Automação de processos",
   "Dados e reporting",
-  "Manutenção informática",
-  "Reparação de computadores",
-  "Formação profissional",
+  "Manutenção e reparação de computadores",
+  "Construção de computadores à medida",
+  "Formação para todas as idades",
 ];
 
-const values = [
-  { t: "Mão na massa", d: "Soluções feitas para resolver problemas concretos, sem complicar o que pode ser simples." },
-  { t: "Clareza", d: "Tecnologia explicada e aplicada de forma direta, com resultados que se veem." },
-  { t: "Aprendizagem contínua", d: "Mais de duas décadas a acompanhar a tecnologia e a partilhar o que se aprende." },
+const pillars = [
+  { t: "Software", d: "Aplicações e automações à medida de quem as vai usar, pensadas para resolver problemas concretos." },
+  { t: "Computadores", d: "Manutenção, reparação e montagem de computadores à medida das necessidades e do orçamento de cada pessoa." },
+  { t: "Formação", d: "Aprender tecnologia sem barreiras: formação para todas as idades, do primeiro rato ao primeiro código." },
 ];
 
 function Index() {
@@ -43,19 +43,19 @@ function Index() {
         <span className="font-display text-2xl tracking-tight">
           IWM<span className="text-primary">.</span>
         </span>
-        <span className="text-sm text-muted-foreground">iwm.pt</span>
+        <span className="text-sm text-muted-foreground">Viseu, Portugal · iwm.pt</span>
       </header>
 
       <section className="relative overflow-hidden">
         <div className="grid-lines absolute inset-0 opacity-40" aria-hidden />
         <div className="relative mx-auto max-w-6xl px-6 pb-24 pt-20 md:pt-32">
-          <p className="mb-6 text-sm uppercase tracking-[0.3em] text-primary">Desde 2002</p>
+          <p className="mb-6 text-sm uppercase tracking-[0.3em] text-primary">Desde 2002 · Viseu, Portugal</p>
           <h1 className="font-display max-w-4xl text-5xl leading-[1.05] md:text-7xl">
             IT Workshop <span className="text-primary">&amp;</span> Maintenance
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-muted-foreground">
-            Uma oficina de tecnologia: um projeto pessoal, sem fins comerciais, onde se constroem
-            aplicações, se cuidam sistemas e se partilha conhecimento.
+            Um projeto pessoal, sem fins comerciais, dedicado à tecnologia: software à medida,
+            manutenção e montagem de computadores e formação para todas as idades.
           </p>
         </div>
       </section>
@@ -80,7 +80,8 @@ function Index() {
           <div>
             <h2 className="font-display text-3xl md:text-4xl">O que se faz aqui</h2>
             <p className="mt-4 text-muted-foreground">
-              Do código ao hardware: tudo o que envolve pôr a tecnologia a funcionar bem.
+              Do código ao hardware: tudo o que envolve pôr a tecnologia a funcionar bem e ao
+              alcance de todos.
             </p>
           </div>
           <ul className="grid gap-3 sm:grid-cols-2">
@@ -97,7 +98,7 @@ function Index() {
       <section className="border-t border-border">
         <div className="mx-auto max-w-6xl px-6 py-24">
           <div className="grid gap-10 md:grid-cols-3">
-            {values.map((v) => (
+            {pillars.map((v) => (
               <div key={v.t}>
                 <div className="mb-4 h-px w-12 bg-primary" />
                 <h3 className="font-display text-xl">{v.t}</h3>
@@ -114,7 +115,7 @@ function Index() {
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col justify-between gap-2 px-6 py-8 text-sm text-muted-foreground md:flex-row">
           <span>© 2002–{new Date().getFullYear()} IWM — IT Workshop &amp; Maintenance</span>
-          <span>iwm.pt</span>
+          <span>Viseu, Portugal · iwm.pt</span>
         </div>
       </footer>
     </div>
