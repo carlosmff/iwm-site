@@ -46,7 +46,7 @@ const pt = {
     custom: "à medida de cada pessoa",
     wafer: "wafer de silício", heatsink: "dissipador",
   },
-  cta: { services: "Ver serviços", partners: "Para Juntas e associações" },
+  cta: { services: "Ver serviços", partners: "Para Instituições públicas e privadas" },
   ui: { toLight: "Mudar para tema claro", toDark: "Mudar para tema escuro", language: "Idioma", skip: "Saltar para o conteúdo" },
 };
 
